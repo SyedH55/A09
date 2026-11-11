@@ -2,6 +2,9 @@
 :root {
 	--accent-color: #800000;  /* could also be coded #800 */
 	--gradient-color: #f6bb73;
+	--light-menu-color: white;
+	--mid-menu-color: rgb(241, 198, 140);
+	--dark-menu-color: black;
 }
 
 /* reset */
@@ -125,4 +128,58 @@ footer {
 }
 .large {
 	font-size: 125%;
+}
+
+/* Navbar Styles */
+.menu {
+	display: flex;
+	flex-wrap: wrap;
+	& li {
+		flex-basis: 20%;
+		text-align: center;
+		color: var(--light-menu-color);
+		display: hidden;
+	}
+}
+.menu li:has(.submenu){
+	position: relative;
+	& small{
+		margin-left: .25em;
+	}
+	&:hover > .submenu {
+		display: block;
+}
+}
+.menu > li:first-child a {margin-left: 0;}
+.menu > li:last-child a {margin-left: 0;}
+.navbar {
+	background-color: var(--accent-color);
+	& a {
+		display: block;
+		padding: 1em;
+		text-decoration: none;
+		color: var(--light-menu-color);
+		margin: 0px, 1px, 1px, 2px;
+	}
+	a:hover, a:focus, a.current {
+		background-color: var(--mid-menu-color);
+		color: var(--dark-menu-color)
+
+	}
+	& ul {
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+}
+.submenu {
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: var(--accent-color);
+	color: var(--light-menu-color);
+	display: none;
+	& > li a {
+		margin: 0 2px 2px;
+	}
 }
